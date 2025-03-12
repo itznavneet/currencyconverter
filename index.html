@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="icon" type="image/png" href="currlogo.png">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+
+        nav {
+            font-family: "Noto Sans", sans-serif;
+            font-weight: 700;
+            display: flex;
+            font-size: 18px;
+            background-color: rgb(146, 102, 207);
+            padding: 23px;
+
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: black;
+            transition: all;
+            transition-duration: 400ms;
+        }
+
+        nav li a:hover {
+            text-decoration: none;
+            color:
+                rgb(170, 168, 168);
+        }
+
+        div.logo {
+            display: flex;
+            justify-content: center;
+            column-gap: 5px;
+            align-items: center;
+            margin: 0 23px;
+            color: rgb(62, 44, 22);
+
+        }
+
+        nav ul li {
+            list-style-type: none;
+            margin: 0 23px;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        .container {
+            min-height: 100vh;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            max-width: 80vw;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .container h2{
+            /* text-align: center; */
+            margin: 23px;
+        }
+        .container form{
+            display: flex;
+            flex-direction: column;
+        }
+        .container form input[type='number'], select {
+            font-size: 25px;
+            width: 23vw;
+            margin-bottom: 23px;
+        }
+        .container form label{
+            font-size: 25px;
+         
+        }
+        .logo{
+            font-size: 24px;
+        }
+        .btn{
+            width: 144px;
+            padding: 5px 8px;
+            border-radius: 13px;
+            font-size: 17px;
+            background-color: #9266CF;
+            color: black;
+            cursor: pointer;
+        }
+        
+        /* .output table{
+            width: 50vw;
+            text-align: center;
+            border: 2px solid black;
+            font-size: 17px;
+        }
+        .output  table th{
+            padding: 3px;
+        } */
+        footer {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .loader {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid #9266CF; /* Purple */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+        @media (max-width: 600px){
+           nav{
+            flex-direction: column;
+           }
+           nav ul li{
+            margin: 5px 13px;
+           }
+           nav ul{
+            justify-content: center;
+           }
+           .container{
+            max-width: 95vw;
+           }
+          
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="currlogo.png" alt="" width="40px">
+            myCURRENCY</div>
+        <ul>
+            <li><a href="/">Home</li></a>
+            <li><a href="/about">About Us</li></a>
+            <li><a href="/contact">Contact</li></a>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="user">
+
+            <h2>Choose a currency to convert:</h2>
+            <form action="/action.php" method="get">
+                <label for="quantity">Choose a quantity:</label>
+                <input type="number" name="quantity" min="1" max="10">
+                <label for="currencyfrom">Convert From:</label>
+                <select name="currencyfrom">
+                    <option value="AUD">AUD</option>
+                    <option value="BGN">BGN</option>
+                    <option value="BRL">BRL</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CNY">CNY</option>
+                    <option value="CZK">CZK</option>
+                    <option value="DKK">DKK</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="HKD">HKD</option>
+                    <option value="HRK">HRK</option>
+                    <option value="HUF">HUF</option>
+                    <option value="IDR">IDR</option>
+                    <option value="ILS">ILS</option>
+                    <option value="INR">INR</option>
+                    <option value="ISK">ISK</option>
+                    <option value="JPY">JPY</option>
+                    <option value="KRW">KRW</option>
+                    <option value="MXN">MXN</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="NZD">NZD</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PLN">PLN</option>
+                    <option value="RON">RON</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SEK">SEK</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="TRY">TRY</option>
+                    <option value="USD">USD</option>
+                    <option value="ZAR">ZAR</option>
+                </select>
+                <select name="currencyto">
+                    <option value="AUD">AUD</option>
+                    <option value="BGN">BGN</option>
+                    <option value="BRL">BRL</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CNY">CNY</option>
+                    <option value="CZK">CZK</option>
+                    <option value="DKK">DKK</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="HKD">HKD</option>
+                    <option value="HRK">HRK</option>
+                    <option value="HUF">HUF</option>
+                    <option value="IDR">IDR</option>
+                    <option value="ILS">ILS</option>
+                    <option value="INR">INR</option>
+                    <option value="ISK">ISK</option>
+                    <option value="JPY">JPY</option>
+                    <option value="KRW">KRW</option>
+                    <option value="MXN">MXN</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="NZD">NZD</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PLN">PLN</option>
+                    <option value="RON">RON</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SEK">SEK</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="TRY">TRY</option>
+                    <option value="USD">USD</option>
+                    <option value="ZAR">ZAR</option>
+                </select>
+            <button type="submit" class="btn">Convert</button>
+        </div>
+        </form>
+        <div class="output">
+            <h2>Here's the Result:</h2>
+            <div class="loader"></div> <!-- Loader -->
+            <div class="ans"></div>
+        </div>
+        
+    </div>
+    <footer>
+        Copyright &copy; All right reserved.
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
